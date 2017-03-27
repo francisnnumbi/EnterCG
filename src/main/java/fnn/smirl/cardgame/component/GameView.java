@@ -154,7 +154,7 @@ public class GameView extends SurfaceView {
  }
 
  @Override
- protected void onDraw(Canvas canvas) {
+ public void onDraw(Canvas canvas) {
 	preparePaint();
 	canvas.drawColor(Color.BLACK);
 	drawBackground(canvas);
@@ -210,7 +210,7 @@ public class GameView extends SurfaceView {
 							Integer.toString(MainActivity.table.oppScore), 5 * scale, 
 							5 * scale, canvas, whitePaint);
 		String gLevel = "Niveau " + MainActivity.table.level.getLevel();					
-	drawTexting(gLevel, (screenW - whitePaint.measureText(gLevel))/ 2, (10 * scale), canvas, whitePaint);
+	drawTexting(gLevel, (screenW - whitePaint.measureText(gLevel))/ 2, screenH - whitePaint.getTextSize() - (10 * scale), canvas, whitePaint);
 
 	int statTot = MainActivity.table. statW + MainActivity.table.statL;
 	int statP = 0;
@@ -220,15 +220,15 @@ public class GameView extends SurfaceView {
 	drawTexting(statString, screenW - whitePaint.measureText(statString) - (5 * scale), 
 							5 * scale, canvas, whitePaint);	
 
-	String statString2 = "Gagné: " + MainActivity.table.statW;
-	drawTexting(statString2, screenW - whitePaint.measureText(statString2) - (80 * scale), 
+	String statString2 = "Vous: " + MainActivity.table.statW;
+	drawTexting(statString2, screenW - whitePaint.measureText(statString2) - (5 * scale), 
 							35 * scale, canvas, whitePaint);	
 
-	String statString3 = "Perdu: " + MainActivity.table.statL;
+	String statString3 = "Ordi: " + MainActivity.table.statL;
 	drawTexting(statString3, screenW - whitePaint.measureText(statString3) - (5 * scale), 
-							35 * scale, canvas, whitePaint);	
+							65 * scale, canvas, whitePaint);	
 
-	drawTexting("Mon Score: " +
+	drawTexting("Votre Score: " +
 							Integer.toString(MainActivity.table.myScore), (5 * scale), 
 							screenH - whitePaint.getTextSize() - (10 * scale), canvas, whitePaint);
 
@@ -892,7 +892,7 @@ public class GameView extends SurfaceView {
 			 tempPlay == res.getInteger(R.integer.REQ_SPADE)) {
 		validRank = MainActivity.REQUESTER;
 		validSuit = 
-		 ai.chooseSuit(oppHand);
+		 ai.chooseSuit(oppHand, MainActivity.table.level, myHand.size());
 		choseSuit = true;
 		selectedSuit = validSuit;
 		turnToPlay = "Votre Tour";

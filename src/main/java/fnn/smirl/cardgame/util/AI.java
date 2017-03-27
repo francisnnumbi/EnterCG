@@ -24,7 +24,7 @@ public class AI {
 	 return level3(hand, rank, suit);
 	} else
 	if (level == AILevel.PROFESSIONAL) {
-	 return level1(hand, rank, suit);
+	 return level4(hand, rank, suit);
 	}
 
 	return 0;
@@ -330,11 +330,141 @@ public class AI {
 	return play;
  }
 
+ 
+
+ // play PROFESSIONAL
+ private int level4(Hand hand, int rank, int suit) {
+	int play = 0;
+	
+//- check to see if AI has a JOKER and play it;
+	 for (int i = 0; i < hand.size(); i++) {
+		int tempId = hand.getCardProperty(Hand.CARD.ID, i);
+		if (isJoker(tempId)) {
+		 play = tempId;
+		}
+	 }
+
+	// check for DRAW_FOUR
+	if(play == 0){
+	for (int i = 0; i < hand.size(); i++) {
+	 int _tempId = hand.getCardProperty(Hand.CARD.ID, i);
+	 int tempRank = hand.getCardProperty(Hand.CARD.RANK, i);
+	 int tempSuit = hand.getCardProperty(Hand.CARD.SUIT, i);
+	 //- consider only DRAW_FOUR from the list;
+	 if (tempRank == MainActivity.DRAW_FOUR) {
+		//- check if the played card is JOKER in order to play any card which comes first in the list, no need to match;
+		if (rank == MainActivity.DRAW_FIVE_1 || rank == MainActivity.DRAW_FIVE_2) {
+		 play = _tempId;
+		}	
+		if (play == 0) {
+		 // - check if played card is REQUESTER in order to match only the suit that was requested;
+		 if (rank == MainActivity.REQUESTER) {
+			if (suit == tempSuit) {
+			 play = _tempId;
+			}
+		 } else if (suit == tempSuit || rank == tempRank) {
+			play = _tempId; //- match either the suit or the rank;
+		 }
+		}
+	 }
+	}
+	}
+
+	if (play == 0) {
+	 // check for DRAW_TWO
+	 for (int i = 0; i < hand.size(); i++) {
+		int _tempId = hand.getCardProperty(Hand.CARD.ID, i);
+		int tempRank = hand.getCardProperty(Hand.CARD.RANK, i);
+		int tempSuit = hand.getCardProperty(Hand.CARD.SUIT, i);
+		//- consider only DRAW_TWO from the list;
+		if (tempRank == MainActivity.DRAW_TWO) {
+		 //- check if the played card is JOKER in order to play any card which comes first in the list, no need to match;
+		 if (rank == MainActivity.DRAW_FIVE_1 || rank == MainActivity.DRAW_FIVE_2) {
+			play = _tempId;
+		 }	
+		 if (play == 0) {
+			// - check if played card is REQUESTER in order to match only the suit that was requested;
+			if (rank == MainActivity.REQUESTER) {
+			 if (suit == tempSuit) {
+				play = _tempId;
+			 }
+			} else if (suit == tempSuit || rank == tempRank) {
+			 play = _tempId; //- match either the suit or the rank;
+			}
+		 }
+		}
+	 }
+	}
+
+	if (play == 0) {
+	 for (int i = 0; i < hand.size(); i++) {
+		int _tempId = hand.getCardProperty(Hand.CARD.ID, i);
+		int tempRank = hand.getCardProperty(Hand.CARD.RANK, i);
+		int tempSuit = hand.getCardProperty(Hand.CARD.SUIT, i);
+
+		//- ignore JOKER, REQUESTER from the list;
+		if (tempRank != MainActivity.DRAW_FIVE_1 && tempRank != MainActivity.DRAW_FIVE_2
+				&& tempRank != MainActivity.REQUESTER) {
+		 //- check if the played card is JOKER in order to play any card which comes first in the list, no need to match;
+		 if (rank == MainActivity.DRAW_FIVE_1) {
+			play = _tempId;
+		 }
+		 if (rank == MainActivity.DRAW_FIVE_2) {
+			play = _tempId;
+		 }
+
+		 if (play == 0) {
+			// - check if played card is REQUESTER in order to match only the suit that was requested;
+			if (rank == MainActivity.REQUESTER) {
+			 if (suit == tempSuit) {
+				play = _tempId;
+			 }
+			} else if (suit == tempSuit || rank == tempRank) {
+			 play = _tempId; //- match either the suit or the rank;
+			}
+		 }
+		}
+	 }
+	}
+
+	
+
+	//- check to see if AI has a REQUESTER and play it;
+	if (play == 0) {
+	 for (int i = 0; i < hand.size(); i++) {
+		int tempId = hand.getCardProperty(Hand.CARD.ID, i);
+		if (isRequester(tempId)) {
+		 play = tempId;
+		}
+	 }
+	}
+
+	return play;
+ }
 
 
- public int chooseSuit(Hand hand) {
-	int suit = MainActivity.res.getInteger(R.integer.HEART), 
-	 numDiamonds = 0, 
+ public int chooseSuit(Hand hand, AILevel level, int handSize) {
+	int suit = 0;
+	
+	if((level == AILevel.INTERMEDIATE || level == AILevel.ADVANCED || level == AILevel.PROFESSIONAL)
+	 && handSize < 3){
+		for(int a = 0; a < hand.size(); a++){
+		 if(hand.getCardProperty(Hand.CARD.RANK, a) == MainActivity.DRAW_FOUR){
+			suit = hand.getCardProperty(Hand.CARD.SUIT, a);
+		 }
+		}
+		
+		if(suit == 0){
+		 for(int a = 0; a < hand.size(); a++){
+			if(hand.getCardProperty(Hand.CARD.RANK, a) == MainActivity.DRAW_TWO){
+			 suit = hand.getCardProperty(Hand.CARD.SUIT, a);
+			}
+		 }
+		}
+	 }
+	
+	 if(suit == 0){
+	int numDiamonds = 0, 
 	 numClubs = 0,
 	 numHearts = 0,
 	 numSpades = 0;
@@ -355,6 +485,9 @@ public class AI {
 	else if (q == numDiamonds)	suit = MainActivity.res.getInteger(R.integer.DIAMOND); 
 	else if (q == numClubs)	suit = MainActivity.res.getInteger(R.integer.CLUB);	
 	else if (q == numSpades)	suit = MainActivity.res.getInteger(R.integer.SPADE);
+	}
+	if(suit == 0) suit = MainActivity.res.getInteger(R.integer.HEART);
+	
 	return suit;
  }
 

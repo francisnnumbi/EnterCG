@@ -4,7 +4,7 @@
 	<string name="app_name">Enter CG</string>
 	<string name="hello_world">Hello world!</string>
 	<string name="a1">Ordi Score:</string>
-	<string name="a2">Vos statistiques:</string>
+	<string name="a2">Statistique:</string>
 	<string name="you_finish_hand">Vous obtenez %d points!</string>
 	<string name="computer_finish_hand">Ordi obtient %d points!</string>
 	<string name="you_reach_max">"%d points atteints. C\'est gagné!</string>
