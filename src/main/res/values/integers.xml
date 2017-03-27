@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<resources>
+		<integer name="CARD_ROWS">5</integer>
+		<integer name="CARD_COLUMNS">13</integer>
+		<integer name="HAND_SIZE">7</integer>
+		<integer name="HAND_START">4</integer>
+		
+		<integer name="HEART">300</integer>
+		<integer name="DIAMOND">200</integer>
+		<integer name="CLUB">100</integer>
+		<integer name="SPADE">400</integer>
+		
+		<integer name="REQ_HEART">308</integer>
+		<integer name="REQ_DIAMOND">208</integer>
+		<integer name="REQ_CLUB">108</integer>
+		<integer name="REQ_SPADE">408</integer>
+		
+		<integer name="JOKER_BLACK">514</integer>
+		<integer name="JOKER_COLOR">515</integer>
+	</resources>

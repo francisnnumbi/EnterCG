@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<resources>
+		<fraction name="CARD_HEIGHT_SCALE" type="float">150%</fraction>
+		<fraction name="CARD_WIDTH_SCALE" type="float">800%</fraction>
+		
+	</resources>

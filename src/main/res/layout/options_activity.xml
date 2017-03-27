@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="#D5CCCB"
+	android:padding="3dp">
+
+	<TextView
+		android:id="@+id/t1"
+		android:layout_height="wrap_content"
+		android:text="Réinitialiser:"
+		android:layout_width="wrap_content"
+		android:textColor="#000000"
+		android:typeface="serif"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentLeft="true"
+		android:textStyle="bold"
+		android:textScaleX="1.1"
+		android:paddingTop="10dp"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="Réinitialiser"
+		android:layout_width="wrap_content"
+		android:id="@+id/resetStatistics"
+		android:layout_alignParentTop="true"
+		android:layout_toRightOf="@+id/t2"/>
+
+	<TextView
+		android:id="@+id/t2"
+		android:layout_height="wrap_content"
+		android:text="Score Maximum :"
+		android:layout_width="wrap_content"
+		android:textColor="#000000"
+		android:typeface="serif"
+		android:textStyle="bold"
+		android:layout_alignParentLeft="true"
+		android:textScaleX="1.1"
+		android:layout_below="@+id/resetStatistics"
+		android:layout_alignStart="@+id/t1"
+		android:paddingTop="10dp"/>
+
+	<Spinner
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:id="@+id/optionsMaxScoreSpinner"
+		android:textColor="#ff000000"
+		android:padding="5dp"
+		android:layout_below="@+id/resetStatistics"
+		android:layout_toRightOf="@+id/t2"
+		android:gravity="right"/>
+
+	<TextView
+		android:id="@+id/t3"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="Music Volume :"
+		android:layout_alignParentLeft="true"
+		android:layout_alignStart="@+id/t2"
+		android:textColor="#000000"
+		android:layout_marginTop="10dp"
+		android:typeface="serif"
+		android:textStyle="bold"
+		android:textScaleX="1.1"
+		android:layout_below="@+id/optionsMaxScoreSpinner"/>
+
+	<SeekBar
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_below="@+id/t3"
+		android:layout_alignParentLeft="true"
+		android:layout_alignStart="@+id/t3"
+		android:id="@+id/seek_music_vol"/>
+
+	<TextView
+		android:id="@+id/t4"
+		android:layout_height="wrap_content"
+		android:text="Clic Volume:"
+		android:layout_width="wrap_content"
+		android:layout_below="@+id/seek_music_vol"
+		android:layout_alignParentLeft="true"
+		android:layout_alignStart="@+id/seek_music_vol"
+		android:typeface="serif"
+		android:textStyle="bold"
+		android:textScaleX="1.1"
+		android:textColor="#000000"
+		android:layout_marginTop="10dp"/>
+
+	<SeekBar
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_below="@+id/t4"
+		android:layout_alignParentLeft="true"
+		android:layout_alignStart="@+id/t4"
+		android:id="@+id/seek_click_vol"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Niveau :"
+		android:typeface="serif"
+		android:textStyle="bold"
+		android:textScaleX="1.1"
+		android:textColor="#000000"
+		android:layout_marginTop="10dp"
+		android:layout_width="wrap_content"
+		android:layout_below="@+id/seek_click_vol"
+		android:id="@+id/optionsactivityTextView1"
+		android:paddingTop="10dp"/>
+
+	<Spinner
+		android:id="@+id/level_spinner"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:layout_below="@+id/seek_click_vol"
+		android:layout_toRightOf="@+id/optionsactivityTextView1"/>
+
+</RelativeLayout>
+

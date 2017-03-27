@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:id="@+id/chooseSuitLayout"
+	android:layout_gravity="top"
+	android:background="#F5B9B5">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Choisissez une couleur:"
+		android:layout_width="match_parent"
+		android:id="@+id/chooseSuitText"
+		android:textSize="22sp"
+		android:textColor="#221C42"
+		android:gravity="center"
+		android:layout_margin="10dp"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:textStyle="bold"
+		android:typeface="monospace"/>
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center"
+		android:layout_gravity="center">
+
+		<ImageButton
+			android:layout_height="70dp"
+			android:layout_width="70dp"
+			android:src="@drawable/deck_heart"
+			android:id="@+id/d_heart"
+			android:background="#FFFFFF"
+			android:layout_margin="2dp"/>
+
+		<ImageButton
+			android:layout_height="70dp"
+			android:layout_width="70dp"
+			android:src="@drawable/deck_diamond"
+			android:id="@+id/d_diamond"
+			android:background="#FFFFFF"
+			android:layout_margin="2dp"
+			android:layout_marginLeft="10dp"/>
+
+		<ImageButton
+			android:layout_height="70dp"
+			android:layout_width="70dp"
+			android:src="@drawable/deck_club"
+			android:id="@+id/d_club"
+			android:background="#FFFFFF"
+			android:layout_margin="2dp"
+			android:layout_marginLeft="10dp"/>
+
+		<ImageButton
+			android:layout_height="70dp"
+			android:layout_width="70dp"
+			android:src="@drawable/deck_spade"
+			android:id="@+id/d_spade"
+			android:background="#FFFFFF"
+			android:layout_margin="2dp"
+			android:layout_marginLeft="10dp"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+

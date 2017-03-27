@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<resources>
+		<color name="rectangle_color_1">#cc89A8A2</color>
+		<color name="rectangle_color_2">#ccffffff</color>
+		<color name="rectangle_color_3">#77ffffff</color>
+		
+		<color name="shadow_color_1">#000000</color>
+		
+		<color name="stroke_color_1">#ffffff</color>
+		<color name="stroke_color_2">#FF0000</color>
+		
+		<color name="canvas_color_1">#cc3B4065</color>
+		
+		<color name="text_color_1">#ffffff</color>
+		<color name="text_color_2">#0000ff</color>
+		
+	</resources>

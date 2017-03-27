@@ -1,0 +1,92 @@
+in this game, user plays with the Computer.
+depending on the cards and valid moves, the computer simulates thinking for each move.
+
+Levels depends on orders of processing matches
+Bear in mind that there are special ranks:
+- DRAW_FIVE_1, DRAW_FIVE_2 (JOKER) : 14 and 15, forces the other player to draw 5 cards from the Deck;
+- DRAW_TWO : 2, forces thr other player to dtaw 2 cards from the deck;
+- DRAW_FOUR : 10, forces thr other player to dtaw 4 cards from the deck;
+- REQUESTER : 8, request for a change in the valid suit.
+
+- REQUESTER and JOKER can play on any valid suit and rank.
+
+
+LEVEL 0 : ROOKIE (DRAW_TWO, DRAW_FOUR, REQUESTER and JOKER are last resorts when there is no other match)
+- starting hand = 3;
+- ignore JOKER, REQUESTER, DRAW_FOUR, DRAW_TWO from the list;
+- check if the played card is JOKER in order to play any card
+which comes first in the list, no need to match;
+- check if played card is REQUESTER in order to match only the suit that
+was requested;
+- match either the suit or the rank;
+
+# order of favorite DRAW_TWO, DRAW_FOUR, REQUESTER and JOKER
+# playing sleepy
+- check to see if AI has a DRAW_TWO and play it;
+- check to see if AI has a DRAW_FOUR and play it;
+- check to see if AI has a REQUESTER and play it;
+- check to see if AI has a JOKER and play it;
+
+
+
+LEVEL 1 : BEGINNER (REQUESTER and JOKER are last resorts when there is no other match)
+- starting hand = 4;
+- ignore JOKER, REQUESTER from the list;
+- check if the played card is JOKER in order to play any card
+which comes first in the list, no need to match;
+- check if played card is REQUESTER in order to match only the suit that
+was requested;
+- match either the suit or the rank;
+
+# REQUESTER is favorite over JOKER
+# playing defensive
+- check to see if AI has a REQUESTER and play it;
+- check to see if AI has a JOKER and play it;
+
+
+
+LEVEL 2 : INTERMEDIATE (JOKER and REQUESTER are last resorts when there is no other match)
+- starting hand = 5;
+- ignore JOKER, REQUESTER from the list;
+- check if the played card is JOKER in order to play any card
+which comes first in the list, no need to match;
+- check if played card is REQUESTER in order to match only the suit that
+was requested;
+- match either the suit or the rank;
+
+# JOKER is favorite over REQUESTER
+# playing agressive defense
+- check to see if AI has a JOKER and play it;
+- check to see if AI has a REQUESTER and play it;
+
+
+LEVEL 3 : ADVANCED (JOKER and REQUESTER are last resorts when there is no other match)
+- starting hand = 6;
+- ignore JOKER, REQUESTER from the list;
+- check if the played card is JOKER in order to play any card
+but DRAW_FOUR will be searched first, then DRAW_TWO, finally the others;
+- check if played card is REQUESTER in order to match only the suit that
+was requested : DRAW_FOUR will be searched first, then DRAW_TWO, finally the others;
+- match either the suit or the rank : DRAW_FOUR will be searched first, then DRAW_TWO, finally the others;
+
+# JOKER is favorite over REQUESTER
+# playing attack
+- check to see if AI has a JOKER and play it;
+- check to see if AI has a REQUESTER and play it;
+
+
+LEVEL 4 : PROFESSIONAL (REQUESTER is last resort when there is no other match)
+- starting hand = 7;
+- check to see if AI has a JOKER and play it;
+- ignore REQUESTER from the list;
+- check if the played card is JOKER in order to play any card
+but DRAW_FOUR will be searched first, then DRAW_TWO, finally the others;
+- check if played card is REQUESTER in order to match only the suit that
+was requested : DRAW_FOUR will be searched first, then DRAW_TWO, finally the others;
+- match either the suit or the rank : DRAW_FOUR will be searched first, then DRAW_TWO, finally the others;
+
+# playing aggressive attack
+- check to see if AI has a REQUESTER and play it;
+
+
+
